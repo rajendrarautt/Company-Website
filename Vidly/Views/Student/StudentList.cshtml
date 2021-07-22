@@ -1,0 +1,31 @@
+﻿@model List<Vidly.Context.Student>
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Contact</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.fname</td>
+            <td>@item.lname</td>
+            <td>@item.contact</td>
+            <td>@item.address</td>
+            <td>@item.email</td>
+            <td>
+                <a href="@Url.Action("Student", new {item.id, item.fname, item.lname, item.contact,item.address,item.email})" class="btn btn-success">Edit</a>
+                <a href="@Url.Action("Delete", new {item.id})" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
